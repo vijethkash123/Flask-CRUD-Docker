@@ -69,3 +69,17 @@ docker build -t vijeth-flask .
 ```
 docker run  -p 5000:5000 -it vijeth-flask
 ```
+
+### To make the postgres container stateful, atleast when running containers locally
+1. Run this command
+```
+docker run --name vijeth-postgres -e POSTGRES_PASSWORD=mysecretpassword123 -v ${PWD}\postgres-init:/docker-entrypoint-initdb.d -v postgres-data:/var/lib/postgresql/data -p 8080:5432 -d postgres
+```
+Mount the volume to the PostgreSQL container’s data directory (/var/lib/postgresql/data), which is where PostgreSQL stores its database files.
+`-v postgres-data:/var/lib/postgresql/data` mounts the volume postgres-data to the PostgreSQL data directory inside the container.
+When you recreate the container using this volume, all inserted records will persist.
+
+How It Works:
+The PostgreSQL data is stored in the volume (postgres-data in this case).
+When you stop or remove the container, the volume and the data remain.
+When you run a new container and mount the same volume (postgres-data), it will have access to the previous data.
