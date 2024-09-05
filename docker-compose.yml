@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  flask-app:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8082:8082"
+    depends_on:
+      - postgres
+    networks:
+      - flask-postgres-network
+
+  postgres:
+    image: postgres:latest
+    ports:
+      - "8081:5432"
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: mysecretpassword123
+    volumes:
+      - ./postgres-init:/docker-entrypoint-initdb.d
+    networks:
+      - flask-postgres-network
+
+volumes:
+  postgres_data:
+
+networks:
+  flask-postgres-network:
