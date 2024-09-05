@@ -79,6 +79,14 @@ Mount the volume to the PostgreSQL container’s data directory (/var/lib/postgr
 `-v postgres-data:/var/lib/postgresql/data` mounts the volume postgres-data to the PostgreSQL data directory inside the container.
 When you recreate the container using this volume, all inserted records will persist.
 
+We don't need to create any local directory named postgres-data. It's the name of docker volume that will be create. You can see the volumes created by running 
+`docker volume ls`
+```
+DRIVER    VOLUME NAME  
+local     postgres-data
+```
+It will also be visible in the Docker desktop volumes console.
+
 How It Works:
 The PostgreSQL data is stored in the volume (postgres-data in this case).
 When you stop or remove the container, the volume and the data remain.
