@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 
-
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -30,7 +29,7 @@
         {% for user in users_list %}
         <div class="ui segment">
             <p>User number: {{user.user_id}}</p>
-            <p class="ui big header">{{ user.user_name}} | {{user.age}}  | {{user.gender}}</p>
+            <p class="ui big header">{{ user.user_name}} | {{user.age}} | {{user.gender}}</p>
 
             {% if user.gender == "M" %}
             <span class="ui blue label">MALE</span>
@@ -38,7 +37,7 @@
             <span class="ui pink label">FEMALE</span>
             {% endif %}
 
-            <a class="ui blue button" href="/update/{{ user.user_id }}">Update GENDER 😂</a>
+            <a class="ui blue button" href="/update/{{ user.user_id }}">Update Flag 😂</a>
             <a class="ui red button" href="/delete/{{ user.user_id }}">Delete ❌</a>
         </div>
         {% endfor %}

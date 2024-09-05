@@ -6,6 +6,7 @@ app = Flask(__name__)
 
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:mysecretpassword123@postgres:5432/flask'
+# app.config['SQLALCHEMY_DATABASE_URI'] = 'postgresql://postgres:mysecretpassword123@localhost:8080/flask'  # to run locally
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 db = SQLAlchemy(app)
 
